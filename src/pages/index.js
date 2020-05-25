@@ -3,11 +3,28 @@ import { Link, graphql } from "gatsby"
 import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
+import { getUser, isLoggedIn } from "../services/auth"
 
 export default function Home({ data }) {
   console.log(data)
   return (
     <Layout>
+      <div>
+        <h1>Hello {isLoggedIn() ? getUser().name : "world"}!</h1>
+        <p>
+          {isLoggedIn() ? (
+            <>
+              You are logged in, so check your{" "}
+              <Link to="/app/profile">profile</Link>
+            </>
+          ) : (
+              <>
+                You should <Link to="/app/login">log in</Link> to see restricted
+            content
+          </>
+            )}
+        </p>
+      </div>
       <div>
         <h1
           css={css`
