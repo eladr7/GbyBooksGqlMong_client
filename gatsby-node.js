@@ -26,6 +26,16 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressPost(sort: { fields: [date] }) {
+        edges {
+          node {
+            title
+            excerpt
+            content
+            slug
+          }
+        }
+      }
     }
   `)
 
@@ -37,6 +47,18 @@ exports.createPages = async ({ graphql, actions }) => {
                 // Data passed to context is available
                 // in page queries as GraphQL variables.
                 slug: node.fields.slug,
+            },
+        })
+    })
+
+    result.data.allWordpressPost.edges.forEach(({ node }) => {
+        createPage({
+            path: node.slug,
+            component: path.resolve(`./src/templates/blog-post-wp.js`),
+            context: {
+                // This is the $slug variable
+                // passed to blog-post-wp.js
+                slug: node.slug,
             },
         })
     })

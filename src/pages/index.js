@@ -62,6 +62,16 @@ export default function Home({ data }) {
             </Link>
           </div>
         ))}
+        <h1>My WordPress Blog</h1>
+        <h4>Posts</h4>
+        {data.allWordpressPost.edges.map(({ node }) => (
+          <div key={node.slug}>
+            <Link to={node.slug}>
+              <p>{node.title}</p>
+            </Link>
+            <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+          </div>
+        ))}
       </div>
     </Layout>
   )
@@ -82,6 +92,15 @@ export const query = graphql`
           fields {
             slug
           }
+        }
+      }
+    }
+    allWordpressPost(sort: { fields: [date] }) {
+      edges {
+        node {
+          title
+          excerpt
+          slug
         }
       }
     }
