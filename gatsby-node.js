@@ -39,29 +39,31 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/templates/blog-post.js`),
-            context: {
-                // Data passed to context is available
-                // in page queries as GraphQL variables.
-                slug: node.fields.slug,
-            },
+    if (result.data) {
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+            createPage({
+                path: node.fields.slug,
+                component: path.resolve(`./src/templates/blog-post.js`),
+                context: {
+                    // Data passed to context is available
+                    // in page queries as GraphQL variables.
+                    slug: node.fields.slug,
+                },
+            })
         })
-    })
+        result.data.allWordpressPost.edges.forEach(({ node }) => {
+            createPage({
+                path: node.slug,
+                component: path.resolve(`./src/templates/blog-post-wp.js`),
+                context: {
+                    // This is the $slug variable
+                    // passed to blog-post-wp.js
+                    slug: node.slug,
+                },
+            })
+        })
+    }
 
-    result.data.allWordpressPost.edges.forEach(({ node }) => {
-        createPage({
-            path: node.slug,
-            component: path.resolve(`./src/templates/blog-post-wp.js`),
-            context: {
-                // This is the $slug variable
-                // passed to blog-post-wp.js
-                slug: node.slug,
-            },
-        })
-    })
 }
 
 // Implement the Gatsby API “onCreatePage”. This is

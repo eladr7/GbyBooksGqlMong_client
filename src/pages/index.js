@@ -4,11 +4,13 @@ import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
 import { getUser, isLoggedIn } from "../services/auth"
+import SEO from "../components/seo"
 
 export default function Home({ data }) {
   console.log(data)
   return (
     <Layout>
+      <SEO title="My Amazing Gatsby App" />
       <div>
         <h1>Hello {isLoggedIn() ? getUser().name : "world"}!</h1>
         <p>

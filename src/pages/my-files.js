@@ -2,11 +2,12 @@ import React from 'react';
 import { graphql } from "gatsby"
 
 import Layout from '../components/layout';
-
+import SEO from "../components/seo"
 
 const MyFiles = ({ data }) => {
     return (
         <Layout>
+            <SEO title="My Amazing Gatsby App" />
             <div>
                 <h1>My Site's Files</h1>
                 <table>

@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./about-css-modules.module.css"
 import Container from "../components/container"
 import Header from "../components/header"
-
+import SEO from "../components/seo"
 
 const User = props => (
     <div className={styles.user}>
@@ -17,6 +17,7 @@ const User = props => (
 export default function About() {
     return (
         <Container>
+            <SEO title="My Amazing Gatsby App" />
             <Header headerText="About CSS Modules" />
             <p>CSS Modules are cool</p>
             <User
