@@ -51,6 +51,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 },
             })
         })
+
+        // https://github.com/ivandoric/Gatsby-WordPress/tree/e06/Images
         result.data.allWordpressPost.edges.forEach(({ node }) => {
             createPage({
                 path: node.slug,

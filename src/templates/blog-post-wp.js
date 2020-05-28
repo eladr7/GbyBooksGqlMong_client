@@ -1,16 +1,31 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 
+
 export default function BlogPost({ data }) {
   const post = data.allWordpressPost.edges[0].node;
+
+  // const imagesResolutions = post.childWordPressAcfPostPhoto.photo.localFile.childImageSharp.resolutions;
+  const imagesResolutions = post.featured_media.localFile.childImageSharp.resolutions
+
   return (
     <Layout>
       <SEO title={post.title} description={post.excerpt} />
       <div>
         <h1>{post.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        {imagesResolutions &&
+                    <div>
+                        <Img resolutions={imagesResolutions}/>
+                        {/* < img src={imagesResolutions.src} alt=""/> */}
+                    </div>
+                }
+        {/* {imagesResolutions.map(imageRes => (
+          <Img resolutions={imageRes} key={imageRes.src} />
+        ))} */}
       </div>
     </Layout>
   )
@@ -23,6 +38,17 @@ export const query = graphql`
         node {
           title
           content
+          featured_media{
+            localFile{
+                childImageSharp{
+                    resolutions(width:500, height: 200){
+                        src
+                        width
+                        height
+                    }
+                }
+            }
+          }
         }
       }
     }
