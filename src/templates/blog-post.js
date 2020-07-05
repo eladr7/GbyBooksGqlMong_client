@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 export default function BlogPost({ data }) {
   const post = data.markdownRemark
   return (
-    <Layout pageTitle="My site title">
+    <Layout pageTitle={post.frontmatter.title} postExcerpt={post.excerpt}>
       <div>
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
