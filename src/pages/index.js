@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby"
 import { rhythm } from "../utils/typography"
 import { css } from "@emotion/core"
 
+
 const LocalPosts = ({ data }) => {
   return (
     <div style={{ marginLeft: `5%` }}>
@@ -35,7 +36,6 @@ export default function Home({ data }) {
       <Layout headerText="Home page blat!" pageTitle="My site title">
         <h2>Here are all the blog posts:</h2>
         <LocalPosts data={data} />
-        {/* <WpPosts /> */}
       </Layout>
     </div>
   )
