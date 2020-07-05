@@ -14,7 +14,7 @@ const User = props => (
 
 export default function About() {
   return (
-    <Layout headerText="About me">
+    <Layout headerText="About me" pageTitle="My site title">
       <div style={{ color: `teal` }}>
         <div>
           <p>What can i say - i'm cool</p>

@@ -1,7 +1,6 @@
 import React from "react"
 import Layout from '../components/layout'
 import { graphql, Link } from "gatsby"
-
 import { rhythm } from "../utils/typography"
 import { css } from "@emotion/core"
 
@@ -33,7 +32,7 @@ const LocalPosts = ({ data }) => {
 export default function Home({ data }) {
   return (
     <div style={{ color: `purple` }}>
-      <Layout headerText="Home page blat!">
+      <Layout headerText="Home page blat!" pageTitle="My site title">
         <h2>Here are all the blog posts:</h2>
         <LocalPosts data={data} />
         {/* <WpPosts /> */}

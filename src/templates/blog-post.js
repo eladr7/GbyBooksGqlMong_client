@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 export default function BlogPost({ data }) {
   const post = data.markdownRemark
   return (
-    <Layout>
+    <Layout pageTitle="My site title">
       <div>
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -21,6 +21,7 @@ export const query = graphql`
       frontmatter {
         title
       }
+      excerpt
     }
   }
 `

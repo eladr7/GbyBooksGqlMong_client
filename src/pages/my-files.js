@@ -30,7 +30,7 @@ const FilesTable = ({data}) => {
 export default function MyFiles({ data }) {
     console.log(data)
     return (
-        <Layout headerText="My Site's Files">
+        <Layout headerText="My Site's Files" pageTitle="My site title">
             <div>Here are the static files of our site: (you suka)</div>
             <FilesTable data={data}/>
         </Layout>
