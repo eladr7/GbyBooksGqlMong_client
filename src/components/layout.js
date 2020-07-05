@@ -40,7 +40,7 @@ export default function Layout({ children, headerText, pageTitle, postExcerpt = 
     `
   )
 
-  const pages = ["Home", "About", "Contact", "my-files"]
+  const pages = ["Home", "About", "Contact", "my-files", "Books"]
 
   return (
     <div className={layoutStyles.layout}>

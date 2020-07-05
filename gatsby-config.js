@@ -35,6 +35,12 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-apollo',
+      options: {
+        uri: 'http://localhost:9005/graphql'
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
