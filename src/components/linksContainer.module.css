@@ -1,0 +1,10 @@
+.container {
+    list-style: none;
+    /* display: flex; */
+    /* float: right; */
+}
+
+.listitem {
+    display: inline-block;
+    margin-right: 1rem;
+}
