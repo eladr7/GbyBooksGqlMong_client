@@ -7,7 +7,7 @@ import AddBook from '../components/books/AddBook';
 import Layout from "../components/layout"
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
+  uri: 'https://gatsby-server-ugdhobbyma-uw.a.run.app/graphql'
 });
 
 const Books = () => {
