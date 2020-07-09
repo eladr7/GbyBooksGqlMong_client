@@ -43,7 +43,7 @@ const BookList = () => {
                         <li key={id} onClick={e => { setSelectedBookId(id); }}>
                             <p>Book Suka name: {name}</p>
                             <p>Book Suka genre: {genre}</p>
-                            <p>Book Suka author: {author.name}</p>
+                            <p>****Book Suka author: {author.name}****</p>
                         </li>)
                     )}
                 </ul>
