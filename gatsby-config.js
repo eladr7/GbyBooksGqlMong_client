@@ -37,7 +37,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-apollo',
       options: {
-        uri: 'http://localhost:9005/graphql'
+        uri: 'https://gatsby-server-ugdhobbyma-uw.a.run.app/graphql'
       }
     },
     {
