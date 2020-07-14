@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import { navigate } from "gatsby"
-import { isLoggedIn } from "../services/auth"
+import { UserContext } from '../services/userContext';
 
 const PrivateRoute = ({ component: Component, location, ...rest }) => {
+  const userContext = useContext(UserContext);
+
   // Elad: Implement a real OpenIdConnect login. compare to the check in TWIK
-  if (!isLoggedIn() && location.pathname !== `/app/login`) {
+  if (!userContext.isLoggedIn() && location.pathname !== `/app/login`) {
     navigate("/app/login")
     return null
   }

@@ -1,14 +1,19 @@
-import React from "react"
-import { getUser } from "../services/auth"
+import React, { useContext } from "react"
+import { UserContext } from '../services/userContext';
 
-const Profile = () => (
-  <>
-    <h1>Your profile</h1>
-    <ul>
-      <li>Name: {getUser().name}</li>
-      <li>E-mail: {getUser().email}</li>
-    </ul>
-  </>
-)
+const Profile = () => {
+  const userContext = useContext(UserContext);
+  const user = userContext.getUser();
+
+  return (
+    <>
+      <h1>Your profile</h1>
+      <ul>
+        <li>Name: {user.name}</li>
+        <li>E-mail: {user.email}</li>
+      </ul>
+    </>
+  );
+}
 
 export default Profile

@@ -3,7 +3,6 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-
 module.exports = {
   /* Your site config here */
   siteMetadata: {
@@ -32,6 +31,16 @@ module.exports = {
         // If useACF is true, then the source plugin will try to import the WordPress ACF Plugin contents.
         // This feature is untested for sites hosted on WordPress.com
         useACF: true,
+        includedRoutes: [
+          "**/posts",
+          "**/pages",
+          "**/media",
+          "**/categories",
+          "**/tags",
+          "**/taxonomies",
+          // "**/users", // uncomment this and watch the warning above reappear!
+          "**/menus",
+      ],
       },
     },
     {

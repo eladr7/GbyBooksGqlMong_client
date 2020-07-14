@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { getBooksQuery } from './queries/queries';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../../services/userContext';
+
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { getBooksQuery, buyBookMutation, getUserQuery } from './queries/queries';
 
 import BookDetails from './BookDetails';
 
@@ -28,10 +30,26 @@ import BookDetails from './BookDetails';
 //     );
 // };
 
+const buyTheBook = (email, buyBook) => bookid => {
+    debugger
+    buyBook({
+        variables: {
+            email: email,
+            book_id: bookid
+        }
+    });
+    // ,
+    //     refetchQueries: [{ query: getBooksQuery }, {query: getUserQuery}]
+  }
+
 const BookList = () => {
+    const userContext = useContext(UserContext);
+    const user = userContext.getUser();
+
     const { loading, error, data } = useQuery(getBooksQuery);
     const [selectedBookId, setSelectedBookId] = useState(null);
-
+    const [buyBook, { mutationData }] = useMutation(buyBookMutation);
+    
     if (loading) return <p>Loading the books details</p>;
     if (error) return <p>Error :(</p>;
 
@@ -44,6 +62,7 @@ const BookList = () => {
                             <p>Book Suka name: {name}</p>
                             <p>Book Suka genre: {genre}</p>
                             <p>****Book Suka author: {author.name}****</p>
+                            <button onclick={() => buyTheBook(user.email, buyBook)(id)}>Buy this fucking book you cunt</button>
                         </li>)
                     )}
                 </ul>

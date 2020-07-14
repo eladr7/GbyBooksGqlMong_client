@@ -1,0 +1,6 @@
+build
+node_modules
+.git
+stories
+.storybook
+server/

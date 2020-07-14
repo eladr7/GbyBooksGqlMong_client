@@ -1,16 +1,12 @@
-import React from "react"
-import linksContainerStyles from "./linksContainer.module.css"
+import React, { useContext } from "react"
+import linksContainerStyles from "../cssModules/linksContainer.module.css"
+import { UserContext } from '../../services/userContext';
+
 import { Link, navigate } from "gatsby"
-import { getUser, isLoggedIn, logout } from "../services/auth"
 
 
 export default function LinksContainer({ pages }) {
-    // let greetingMessage = ""
-    // if (isLoggedIn()) {
-    //     greetingMessage = `Hello ${getUser().name}`
-    // } else {
-    //     greetingMessage = "You are not logged in"
-    // }
+    const userContext = useContext(UserContext);
 
     return (
         <div style={{
@@ -28,12 +24,12 @@ export default function LinksContainer({ pages }) {
 
                 <Link className={linksContainerStyles.listitem} to="/app/profile">Profile</Link>
                 {` `}
-                {isLoggedIn() ? (
+                {userContext.isLoggedIn() ? (
                     <a
                         href="/"
                         onClick={event => {
                             event.preventDefault()
-                            logout(() => navigate(`/app/login`))
+                            userContext.logout(() => navigate(`/app/login`))
                         }}
                     >
                         Logout
