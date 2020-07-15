@@ -19,9 +19,8 @@ const addUserToDB = async (user, addUser, userContext) => {
       email: user.email
     }
   });
-  debugger
+
   if (addedUserHasIdField(userAdded)) {
-    debugger
     const userFromDB = { id: userAdded.data.addUser.id };
     userContext.setUserId(userFromDB);
   }
@@ -34,11 +33,9 @@ const Login = () => {
   const user = userContext.getUser();
   const [addUser] = useMutation(addUserMutation);
 
-  debugger
   const email = user ? user.email : "";
   const { loading, error, data } = useQuery(getUserQuery, { variables: { email } });
   if (error) return <p>Blat! couldn't get the user data to verify it</p>;
-  debugger
 
   const onSuccessLogin = () => res => {
     const { tokenId, profileObj: { name, email } } = res;
@@ -46,7 +43,6 @@ const Login = () => {
     userContext.setSuccessfulLogin(user);
   }
 
-  debugger
   if (userContext.isLoggedIn()) {
     navigate(`/app/profile`)
   }
