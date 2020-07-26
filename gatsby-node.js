@@ -72,6 +72,14 @@ const createWpPages = (graphql, createPage) => {
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
+
+      // 404
+  createPage({
+    path: '/404',
+    component: path.resolve('./src/templates/not-found-template.js')
+  })
+
+  
     createLocalMdPages(graphql, createPage)
     createWpPages(graphql, createPage)
 }

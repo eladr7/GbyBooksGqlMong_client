@@ -7,10 +7,38 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: `Title from siteMetadata`,
+    subtitle: `This is a cool apartments site`,
+    copyright: '© 2020 | TLV, Israel',
     description: `A simple description about pandas eating lots...`,
     author: `@gatsbyjs`,
     keywords: ['my cool site', 'king site', 'im the king', 'get a super site'],
     siteUrl: `http://localhost:8000/`,
+    menu: [
+      {
+        label: 'Contact us',
+        path: '/contact'
+      },
+      {
+        label: 'About us',
+        path: '/about'
+      }
+    ],
+    author: {
+      name: 'Available Apartments',
+      photo: '/beach.jpg',
+      bio: 'Developer. Optimizer. Learner.',
+      contacts: {
+        // don't remove fields, just make them empty string ''
+        // https://github.com/gatsbyjs/gatsby/issues/2392
+        github: 'dospolov',
+        twitter: 'marat_dospolov',
+        linkedin: 'dospolov',
+        telegram: 'dospolov',
+        instagram: 'dospolov',
+        facebook: 'dospolov',
+        email: ''
+      }
+    }
   },
   plugins: [
     {
@@ -57,13 +85,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    `gatsby-plugin-emotion`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -77,7 +98,7 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/beach.jpg`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-offline`,
