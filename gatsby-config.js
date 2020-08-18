@@ -68,7 +68,7 @@ module.exports = {
           "**/taxonomies",
           // "**/users", // uncomment this and watch the warning above reappear!
           "**/menus",
-      ],
+        ],
       },
     },
     {
