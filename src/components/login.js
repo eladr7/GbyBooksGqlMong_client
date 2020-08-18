@@ -7,7 +7,7 @@ import { getUserQuery, addUserMutation } from './books/queries/queries';
 import { navigate } from "gatsby"
 
 import GoogleLogin from 'react-google-login';
-const googleAppId = "916430282052-fgf6b716m19seu57dhr9dtj99o7tcevs.apps.googleusercontent.com"
+const googleAppId = process.env.GOOGLE_APP_ID;
 
 const addedUserHasIdField = userAdded => 
   (userAdded && userAdded.data && userAdded.data.addUser && userAdded.data.addUser.id);
